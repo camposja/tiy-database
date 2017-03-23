@@ -53,12 +53,22 @@ loop do
       end
     end
   elsif selection == "d"
-    puts "Type first name of the person you want to delete: "
+    index = 0
+    finder = false
+    print "Type first name of the person you want to delete: "
     delete = gets.chomp
-
-    
-  else
-    puts "thank you for chosing TIY, good bye!"
+    people.each do |person|
+      if person.name == delete
+        finder = true
+        people.slice!(index)
+        puts "#{delete} has been deleted.\n"
+      end
+      index += 1
+    end
+    if finder == false
+      puts "The person is not in TIY"
+    else
+      puts "thank you for chosing TIY, good bye!"
   end
 end
 
@@ -116,3 +126,4 @@ end
 #       puts "Thank you for chosing TIY, saving and exiting the app ... "
 # end
 #    def delete_peep
+end
